@@ -41,7 +41,7 @@ mongoose
   })
   .then(() => {
     app.listen(port, () => {
-      console.log("Server is running on port", port);
+      console.log("Servidor conectado!, acesse https://pdv-distribuidora-rlj.vercel.app/");
     });
   })
   .catch((err) => {
