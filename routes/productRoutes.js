@@ -110,10 +110,10 @@ route.patch("/product/:id/quantity", async (req, res) => {
         .json({ message: "Quantidade insuficiente em estoque" });
     }
 
-    // Atualiza a quantidade do produto
+    // Atualizar a quantidade do produto
     product.quantity -= quantity;
 
-    // Se a quantidade for 0, deleta o produto
+    // Se a quantidade for 0, deletar o produto
     if (product.quantity === 0) {
       await Products.findByIdAndRemove(id);
       return res.status(200).json({ message: "Produto deletado com sucesso." });
@@ -144,6 +144,7 @@ route.delete("/product/:id", async (req, res) => {
   }
 });
 
+
 // Rota para obter o valor total de vendas
 route.get("/dashboard", async (req, res) => {
   try {
@@ -164,10 +165,7 @@ route.get("/dashboard", async (req, res) => {
       );
     }, 0);
 
-    
-
     const salesQuantity = sales.length;
-
     const profit = salesPrice - productsPrice;
     const profitFixed = profit.toFixed(2);
     const productsPriceFixed = productsPrice.toFixed(2);

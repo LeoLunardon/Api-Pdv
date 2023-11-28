@@ -3,7 +3,6 @@ const salesRoute = express.Router();
 const Sales = require("../models/Sales");
 
 
-
 salesRoute.post("/sales-history", async (req, res) => {
   try {
     const lastSale = await Sales.findOne({}, {}, { sort: { saleId: -1 } });
@@ -35,4 +34,12 @@ salesRoute.get("/sales-history", async (req, res) => {
   }
 });
 
+
 module.exports = salesRoute;
+
+
+
+
+
+
+

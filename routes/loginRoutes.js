@@ -10,6 +10,7 @@ loginRoute.post("/login/register", async (req, res) => {
   try {
     // Verifica se o email já está cadastrado
     const existingUser = await Users.findOne({ email });
+
     if (existingUser) {
       return res
         .status(422)
