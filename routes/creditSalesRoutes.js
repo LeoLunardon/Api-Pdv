@@ -33,4 +33,23 @@ creditSaleRoute.get("/credit-sales", async (req, res) => {
   }
 });
 
+creditSaleRoute.delete("/credit-sales/:id", async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    const creditSale = await CreditSales.findByIdAndDelete({ _id: id });
+    if (!creditSale) {
+      return res
+        .status(422)
+        .json({ message: "Venda de confiança não encontrada." });
+    } else {
+      return res
+        .status(200)
+        .json({ message: "Venda de confiança deletada com sucesso." });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 module.exports = creditSaleRoute;
